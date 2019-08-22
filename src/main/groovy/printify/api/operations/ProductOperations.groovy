@@ -15,7 +15,7 @@ class ProductOperations extends ApiOperations {
         api().target("/v1/shops/${shop.id}/products.json").post(data) as Map
     }
 
-    static Map updateProduct(String id, Map data) {
+    static Map updateProduct(Map data) {
         assertNotNull('No shop selected by \'rememberShop(Map)\'!', shop.id)
         assertNotNull('No product selected by \'rememberProductId(String)\'!', productId)
         api().target("/v1/shops/${shop.id}/products/${productId}.json").put(data) as Map
@@ -25,9 +25,8 @@ class ProductOperations extends ApiOperations {
         api().target("/v1/shops/${shop.id}/products/${productId}.json").delete() as Map
     }
 
-    static Map getProduct() {
+    static ArrayList<Map> getProducts() {
         assertNotNull('No shop selected by \'rememberShop(Map)\'!', shop.id)
-        assertNotNull('No product selected by \'rememberProductId(String)\'!', productId)
-        api().target("/v1/shops/${shop.id}/products/${productId}.json").get() as Map
+        api().target("/v1/shops/${shop.id}/products.json").get().data as ArrayList<Map>
     }
 }

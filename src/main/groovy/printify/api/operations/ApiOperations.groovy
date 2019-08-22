@@ -7,7 +7,7 @@ import printify.api.Client
  */
 class ApiOperations {
 
-    static Client api(){
+    static Client api() {
         new Client()
     }
 }

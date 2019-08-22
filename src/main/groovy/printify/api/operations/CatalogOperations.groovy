@@ -10,14 +10,7 @@ class CatalogOperations extends ApiOperations {
     }
 
     static Map getBlueprintFor(String blueprintTitle) {
-        Map targetBlueprint = new HashMap()
-        ArrayList<Map> blueprints = getBlueprints()
-        blueprints.forEach { Map blueprint ->
-            if (blueprintTitle.equals(blueprint.title)) {
-                targetBlueprint = blueprint
-            }
-        }
-        targetBlueprint
+        blueprints.find { bp -> blueprintTitle.equals(bp.title) }
     }
 
     static ArrayList<Map> getProvidersForBlueprint(String blueprintId) {
