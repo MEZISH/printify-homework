@@ -1,7 +1,6 @@
 package printify.api.operations
 
 
-import static org.junit.Assert.assertNotNull
 import static printify.api.context.ValueStore.getProductId
 import static printify.api.context.ValueStore.getShop
 
@@ -11,13 +10,10 @@ import static printify.api.context.ValueStore.getShop
 class ProductOperations extends ApiOperations {
 
     static Map createProduct(Map data) {
-        assertNotNull('No shop selected by \'rememberShop(Map)\'!', shop.id)
         api().target("/v1/shops/${shop.id}/products.json").post(data) as Map
     }
 
     static Map updateProduct(Map data) {
-        assertNotNull('No shop selected by \'rememberShop(Map)\'!', shop.id)
-        assertNotNull('No product selected by \'rememberProductId(String)\'!', productId)
         api().target("/v1/shops/${shop.id}/products/${productId}.json").put(data) as Map
     }
 
@@ -26,7 +22,6 @@ class ProductOperations extends ApiOperations {
     }
 
     static ArrayList<Map> getProducts() {
-        assertNotNull('No shop selected by \'rememberShop(Map)\'!', shop.id)
         api().target("/v1/shops/${shop.id}/products.json").get().data as ArrayList<Map>
     }
 }

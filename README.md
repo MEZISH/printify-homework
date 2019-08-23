@@ -18,7 +18,7 @@ Create printify account:
 _Use `GET products` at least once to validate the result._
 
 ## Implementation
-Implementation is made in Groovy language using Apache HTTP client, JUnit and Gradle build system.
+Implementation is made in Groovy language using Apache HTTP client, TestNG and Gradle build system.
 
 _*NOTE: This implementation is a concept for such tests - in real world test suite author would implement several parts differently to account for scope increase, performance and targeted execution of selected set of tests.*_
 

@@ -1,21 +1,21 @@
 package printify.tests
 
 import org.apache.commons.lang3.RandomStringUtils
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
+import org.testng.annotations.AfterMethod
+import org.testng.annotations.BeforeMethod
+import org.testng.annotations.Test
 import printify.api.operations.CatalogOperations
 import printify.api.operations.MediaOperations
 import printify.api.operations.ProductOperations
 import printify.api.operations.ShopOperations
 
-import static org.junit.Assert.assertNotNull
-import static org.junit.Assert.assertNull
+import static org.testng.Assert.assertNotNull
+import static org.testng.Assert.assertNull
 import static printify.api.context.ValueStore.*
 
 class ProductTest extends BaseTest {
 
-    @Before
+    @BeforeMethod
     void setUp() {
         def myShop = ShopOperations.shops.first()
         rememberShop(myShop)
@@ -33,7 +33,7 @@ class ProductTest extends BaseTest {
         Map productProperties = compileProductProperties(productName, printVariant, blueprint, printProvider, printImage)
 
         def product = ProductOperations.createProduct(productProperties)
-        assertNotNull("Product was not created successfully!\n" + product, product.id)
+        assertNotNull(product.id, "Product was not created successfully!\n" + product,)
         rememberProductId(product.id as String)
 
         def expectedProduct = ProductOperations.products.find { prod ->
@@ -52,7 +52,7 @@ class ProductTest extends BaseTest {
                 'description': RandomStringUtils.randomAlphanumeric(200),
         ]
         def product = ProductOperations.updateProduct(productUpdates)
-        assertNotNull("Product was not updated successfully!\n" + product, product.id)
+        assertNotNull(product.id, "Product was not updated successfully!\n" + product)
 
         def expectedProduct = ProductOperations.products.find { prod ->
             productId.equals(prod.id) && productUpdates.title.equals(prod.title) && productUpdates.description.equals(prod.description)
@@ -72,7 +72,7 @@ class ProductTest extends BaseTest {
         assertNull(expectedProduct)
     }
 
-    @After
+    @AfterMethod
     void cleanUp() {
         ProductOperations.deleteProduct()
     }

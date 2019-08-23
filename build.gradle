@@ -8,16 +8,14 @@ repositories {
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.5'
-    compile 'junit:junit:4.12'
+    compile 'org.testng:testng:7.0.0'
     compile 'org.apache.httpcomponents:httpclient:4.5.3'
     compile 'org.apache.commons:commons-lang3:3.9'
 }
 
 test {
-    def processorCount = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
-    setMaxParallelForks(processorCount)
-}
-
-def prop(String name, String defaultValue = null) {
-    project.hasProperty(name) ? project.getProperty(name) : defaultValue
+    useTestNG() {
+        useDefaultListeners = true
+        suites 'src/test/resources/printify/configuration/testng.xml'
+    }
 }
