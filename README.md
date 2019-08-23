@@ -18,6 +18,10 @@ Create printify account:
 _Use `GET products` at least once to validate the result._
 
 ## Implementation
-Implementation is made in Groovy language using Apache HTTP client, JUnit and Maven’s Surefire Plugin.
+Implementation is made in Groovy language using Apache HTTP client, JUnit and Gradle build system.
 
 _*NOTE: This implementation is a concept for such tests - in real world test suite author would implement several parts differently to account for scope increase, performance and targeted execution of selected set of tests.*_
+
+## Running
+At the root directory of the project run command `gradlew build` (independent from OS).  
+Test report will be located at `build/reports/tests/test/index.html`

@@ -14,9 +14,8 @@ dependencies {
 }
 
 test {
-    systemProperties += [
-            'api.url': prop('apiUrl', 'https://jsonplaceholder.typicode.com'),
-    ]
+    def processorCount = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+    setMaxParallelForks(processorCount)
 }
 
 def prop(String name, String defaultValue = null) {
