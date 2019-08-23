@@ -23,5 +23,5 @@ Implementation is made in Groovy language using Apache HTTP client, TestNG and G
 _*NOTE: This implementation is a concept for such tests - in real world test suite author would implement several parts differently to account for scope increase, performance and targeted execution of selected set of tests.*_
 
 ## Running
-At the root directory of the project run command `gradlew build` (independent from OS).  
+At the root directory of the project run command `gradlew clean test` (independent from OS).  
 Test report will be located at `build/reports/tests/test/index.html`
