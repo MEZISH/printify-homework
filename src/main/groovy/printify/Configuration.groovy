@@ -8,5 +8,5 @@ import printify.utils.DataUtils
 class Configuration {
 
     public static final String API_BASE_URL = 'https://api.printify.com'
-    public static final String API_AUTH_TOKEN = DataUtils.getAuthToken '/printify/api-auth-token'
+    public static final String API_AUTH_TOKEN_LOCATION = '/printify/api-auth-token'
 }
