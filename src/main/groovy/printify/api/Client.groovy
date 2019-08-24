@@ -5,7 +5,6 @@ import org.apache.http.client.methods.*
 import org.apache.http.entity.StringEntity
 import org.apache.http.impl.client.HttpClientBuilder
 import printify.Configuration
-import printify.utils.DataUtils
 
 import static printify.utils.DataUtils.resolve
 
@@ -68,7 +67,7 @@ class Client {
     private static HttpUriRequest addHeaders(HttpUriRequest request) {
         request.addHeader("content-type", "application/json")
         request.addHeader("User-Agent", "Mezavilks test suite")
-        request.addHeader("Authorization", "Bearer ${DataUtils.getAuthToken Configuration.API_AUTH_TOKEN_LOCATION}")
+        request.addHeader("Authorization", "Bearer ${Configuration.API_AUTH_TOKEN}")
         request
     }
 }

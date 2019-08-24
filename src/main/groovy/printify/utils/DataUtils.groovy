@@ -15,8 +15,8 @@ class DataUtils {
     }
 
     static String getAuthToken(String location) {
-        def authToken = this.class.getResource(location)
-        authToken.text
+        def authTokenFile = new File(getClass().getResource(location).toURI())
+        authTokenFile.text
     }
 
     static byte[] readImageFromResources(String resourceFilename) {
